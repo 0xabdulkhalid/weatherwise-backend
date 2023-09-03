@@ -22,7 +22,7 @@ const corsOptions = {
     if (origin === allowedOrigin) {
       callback(null, true);
     } else {
-      callback("404 Bad Request", false);
+      callback(null, false);
     }
   },
 };
