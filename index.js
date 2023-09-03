@@ -28,8 +28,6 @@ app.use((req, res, next) => {
   }
 });
 
-app.use(cors(corsOptions));
-
 app.get("/weather", async (req, res) => {
 
   try {
