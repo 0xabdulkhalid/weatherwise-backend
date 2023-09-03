@@ -20,9 +20,9 @@ const allowedOrigin = 'https://0xabdulkhalid.github.io'
 const corsOptions = {
   origin: function (origin, callback) {
     if (origin === allowedOrigin) {
-      callback(null, true);
-    } else {
       callback(null, false);
+    } else {
+      callback(null, true);
     }
   },
 };
