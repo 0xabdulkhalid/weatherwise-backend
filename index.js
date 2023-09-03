@@ -15,17 +15,18 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
-const allowedOrigin = 'https://0xabdulkhalid.github.io'
+const allowedOrigins = ['https://0xabdulkhalid.github.io'];
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (origin === allowedOrigin) {
-      callback(null, true);
-    } else {
-      callback(null, false);
-    }
-  },
-};
+app.use((req, res, next) => {
+  const origin = req.get('Origin');
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  } else {
+    res.status(403).send('Forbidden');
+  }
+});
 
 app.use(cors(corsOptions));
 
