@@ -15,7 +15,7 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
-const allowedOrigins = ['https://0xabdulkhalid.github.io'];
+const allowedOrigins = ['https://weatherwiseapp.vercel.app'];
 
 app.use((req, res, next) => {
   const origin = req.get('Origin');
